@@ -61,7 +61,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(none, default config)" // Original author or contributor.
+#define STRING_CONFIG_H_AUTHOR "(Sebastian Barriera)" // Original author or contributor.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 // @section machine
@@ -128,7 +128,7 @@
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-//#define CUSTOM_MACHINE_NAME "3D Printer"
+#define CUSTOM_MACHINE_NAME "Spawn"
 //#define CONFIGURABLE_MACHINE_NAME // Add G-code M550 to set/report the machine name
 
 // Printer's unique ID, used by some programs to differentiate between machines.
@@ -152,9 +152,9 @@
  *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC2240', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-#define X_DRIVER_TYPE  A4988
-#define Y_DRIVER_TYPE  A4988
-#define Z_DRIVER_TYPE  A4988
+#define X_DRIVER_TYPE  DRV8825
+#define Y_DRIVER_TYPE  DRV8825
+#define Z_DRIVER_TYPE  DRV8825
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
@@ -166,12 +166,12 @@
 //#define U_DRIVER_TYPE  A4988
 //#define V_DRIVER_TYPE  A4988
 //#define W_DRIVER_TYPE  A4988
-#define E0_DRIVER_TYPE A4988
-//#define E1_DRIVER_TYPE A4988
-//#define E2_DRIVER_TYPE A4988
-//#define E3_DRIVER_TYPE A4988
-//#define E4_DRIVER_TYPE A4988
-//#define E5_DRIVER_TYPE A4988
+#define E0_DRIVER_TYPE DRV8825
+//#define E1_DRIVER_TYPE DRV8825
+//#define E2_DRIVER_TYPE DRV8825
+//#define E3_DRIVER_TYPE DRV8825
+//#define E4_DRIVER_TYPE DRV8825
+//#define E5_DRIVER_TYPE DRV8825
 //#define E6_DRIVER_TYPE A4988
 //#define E7_DRIVER_TYPE A4988
 
@@ -801,7 +801,7 @@
  *
  * With this option disabled, bang-bang will be used. BED_LIMIT_SWITCHING enables hysteresis.
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED
 
 #if ENABLED(PIDTEMPBED)
   //#define MIN_BED_POWER 0   // Min power to improve PID stability (0..MAX_BED_POWER).
@@ -1300,7 +1300,7 @@
  * Override with M92 (when enabled below)
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 8000, 244.84 }
 
 /**
  * Enable support for M92. Disable to save at least ~530 bytes of flash.
@@ -1903,8 +1903,8 @@
 // @section geometry
 
 // The size of the printable area
-#define X_BED_SIZE 200
-#define Y_BED_SIZE 200
+#define X_BED_SIZE 220
+#define Y_BED_SIZE 220
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1912,7 +1912,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 200
+#define Z_MAX_POS 210
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -2498,9 +2498,9 @@
 #define PREHEAT_1_TEMP_CHAMBER 35
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
-#define PREHEAT_2_LABEL       "ABS"
+#define PREHEAT_2_LABEL       "PETG"
 #define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED    110
+#define PREHEAT_2_TEMP_BED    80
 #define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
@@ -2699,7 +2699,7 @@
  * SD Card support is disabled by default. If your controller has an SD slot,
  * you must uncomment the following option or it won't work.
  */
-//#define SDSUPPORT
+#define SDSUPPORT
 
 /**
  * SD CARD: ENABLE CRC
@@ -2722,7 +2722,7 @@
  *
  * :{ 'en':'English', 'an':'Aragonese', 'bg':'Bulgarian', 'ca':'Catalan', 'cz':'Czech', 'da':'Danish', 'de':'German', 'el':'Greek (Greece)', 'el_CY':'Greek (Cyprus)', 'es':'Spanish', 'eu':'Basque-Euskera', 'fi':'Finnish', 'fr':'French', 'gl':'Galician', 'hr':'Croatian', 'hu':'Hungarian', 'it':'Italian', 'jp_kana':'Japanese', 'ko_KR':'Korean (South Korea)', 'nl':'Dutch', 'pl':'Polish', 'pt':'Portuguese', 'pt_br':'Portuguese (Brazilian)', 'ro':'Romanian', 'ru':'Russian', 'sk':'Slovak', 'sv':'Swedish', 'tr':'Turkish', 'uk':'Ukrainian', 'vi':'Vietnamese', 'zh_CN':'Chinese (Simplified)', 'zh_TW':'Chinese (Traditional)' }
  */
-#define LCD_LANGUAGE en
+#define LCD_LANGUAGE es
 
 /**
  * LCD Character Set
@@ -2827,7 +2827,7 @@
 // Add individual axis homing items (Home X, Home Y, and Home Z) to the LCD menu.
 //
 //#define INDIVIDUAL_AXIS_HOMING_MENU
-//#define INDIVIDUAL_AXIS_HOMING_SUBMENU
+#define INDIVIDUAL_AXIS_HOMING_SUBMENU
 
 //
 // SPEAKER/BUZZER
@@ -2835,7 +2835,7 @@
 // If you have a speaker that can produce tones, enable it here.
 // By default Marlin assumes you have a buzzer with a fixed frequency.
 //
-//#define SPEAKER
+#define SPEAKER
 
 //
 // The duration and frequency for the UI feedback sound.
@@ -3031,7 +3031,7 @@
 // RepRapDiscount FULL GRAPHIC Smart Controller
 // https://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 //
 // K.3D Full Graphic Smart Controller
@@ -3572,7 +3572,7 @@
  * which is not as annoying as with the hardware PWM. On the other hand, if this frequency
  * is too low, you should also increment SOFT_PWM_SCALE.
  */
-//#define FAN_SOFT_PWM
+#define FAN_SOFT_PWM
 
 /**
  * Incrementing this by 1 will double the software PWM frequency, affecting heaters, and

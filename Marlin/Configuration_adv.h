@@ -413,7 +413,7 @@
 #if ENABLED(PIDTEMP)
   // Add an additional term to the heater power, proportional to the extrusion speed.
   // A well-chosen Kc value should add just enough power to melt the increased material volume.
-  //#define PID_EXTRUSION_SCALING
+ #define PID_EXTRUSION_SCALING
   #if ENABLED(PID_EXTRUSION_SCALING)
     #define DEFAULT_Kc (100) // heating power = Kc * e_speed
     #define LPQ_MAX_LEN 50
@@ -539,7 +539,7 @@
  * If the machine is idle and the temperature over MINTEMP
  * then extrude some filament every couple of SECONDS.
  */
-//#define EXTRUDER_RUNOUT_PREVENT
+#define EXTRUDER_RUNOUT_PREVENT
 #if ENABLED(EXTRUDER_RUNOUT_PREVENT)
   #define EXTRUDER_RUNOUT_MINTEMP 190
   #define EXTRUDER_RUNOUT_SECONDS 30
@@ -1509,7 +1509,7 @@
 #endif
 
 // Play a beep when the feedrate is changed from the Status Screen
-//#define BEEP_ON_FEEDRATE_CHANGE
+#define BEEP_ON_FEEDRATE_CHANGE
 #if ENABLED(BEEP_ON_FEEDRATE_CHANGE)
   #define FEEDRATE_CHANGE_BEEP_DURATION   10
   #define FEEDRATE_CHANGE_BEEP_FREQUENCY 440
@@ -1592,7 +1592,7 @@
   //#define TURBO_BACK_MENU_ITEM
 
   // BACK menu items show "Back" instead of the previous menu name
-  //#define GENERIC_BACK_MENU_ITEM
+  #define GENERIC_BACK_MENU_ITEM
 
   // Insert a menu for preheating at the top level to allow for quick access
   //#define PREHEAT_SHORTCUT_MENU_ITEM
